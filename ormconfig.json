@@ -1,0 +1,10 @@
+{
+  "type": "mongodb",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "julien-metral",
+  "entities": ["src/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
