@@ -1,14 +1,9 @@
 import { Column, Entity } from 'typeorm';
+import { JobTypeEnum } from '../enums';
 import { EntityBase } from './entity.base';
 
-export enum JobTypeEnum {
-    CDS = 'Centre de service (CDS)',
-    ITSM = 'Gestion de services informatique (ITSM)',
-    IT = `Technologie de l'information (IT)`
-}
-
 @Entity()
-export class ExperienceEntity extends EntityBase {
+export class Experience extends EntityBase {
     @Column({ unique: true })
     public name!: string;
 

@@ -1,8 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import dotenvExpand from 'dotenv-expand';
+import dotenv from 'dotenv';
 
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
+  dotenvExpand(dotenv.config());
+
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
   app.enableCors();

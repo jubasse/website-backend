@@ -2,7 +2,7 @@ import { Column, Entity } from 'typeorm';
 import { EntityBase } from './entity.base';
 
 @Entity()
-export class SkillEntity extends EntityBase {
+export class Skill extends EntityBase {
     @Column({ unique: true })
     public name!: string;
 

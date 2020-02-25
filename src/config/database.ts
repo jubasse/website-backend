@@ -1,13 +1,12 @@
 const env = process.env;
-const type = 'mongodb';
-const password = encodeURIComponent(env.DB_PASSWORD || '');
+const type = env.DB_TYPE;
 
 export default {
     entities: ['dist/entities/*.entity.ts'],
-    logging: env.DB_LOGGING === 'true',
-    synchronize: env.DB_SYNCHRONIZE === 'true',
+    logging: env.TYPEORM_LOGGING === 'true',
+    synchronize: env.TYPEORM_SYNCHRONIZE === 'true',
     type,
-    url: `${type}+srv://${env.DB_USERNAME}:${password}@${env.DB_HOST}/test?retryWrites=true&w=majority`,
+    url: process.env.TYPEORM_URL,
     ssl: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -15,5 +14,5 @@ export default {
         entitiesDir: 'src/entities',
         migrationsDir: 'src/migrations',
         subscribersDir: 'src/subscribers',
-    }
+    },
 };
