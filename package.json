@@ -5,6 +5,7 @@
   "author": "contact@julien-metral.fr",
   "license": "MIT",
   "scripts": {
+    "branch": "git rev-parse --abbrev-ref HEAD | sed -E 's/([a-zA-Z]+)\\///g'",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier \\\"**/*.{ts,js,json,md,yml}\\\" --ignore-path .gitignore --write",
@@ -63,6 +64,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
     "jest": "^25.1.0",
     "prettier": "^1.18.2",
     "supertest": "^4.0.2",
@@ -95,5 +97,12 @@
       "./src/mikro-orm.config.ts",
       "./dist/mikro-orm.config.ts"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "sh tools/prepare-commit-message.sh $HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm run test"
+    }
   }
 }
