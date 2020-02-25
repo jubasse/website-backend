@@ -1,4 +1,4 @@
-import { AppModeEnum } from '../enums/app-mode.enum';
+import { AppModeEnum } from '../enums';
 
 const env = process.env;
 
